@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Курсы валют ЦБ РФ и конвертер валют">
+  <title>Валютный калькулятор | А-Мета</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="https://ameta-fin.ru" aria-label="А-Мета">
+        <span class="brand-mark">А</span>
+        <span class="brand-text"><strong>А-МЕТА</strong><small>Бухгалтерская компания</small></span>
+      </a>
+      <a class="back-link" href="https://ameta-fin.ru">Вернуться на сайт</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Онлайн-сервис</p>
+        <h1>Валютный калькулятор</h1>
+        <p class="lead">Курсы ЦБ РФ по данным архива cbr-xml-daily.ru и быстрый расчет через рубль.</p>
+      </section>
+
+      <section class="panel rates-panel" aria-labelledby="rates-title">
+        <div class="section-head">
+          <div>
+            <p class="section-number">01</p>
+            <h2 id="rates-title">Курсы валют</h2>
+          </div>
+          <label class="date-field">
+            <span>Дата курса</span>
+            <input id="rate-date" type="date">
+          </label>
+        </div>
+
+        <p id="effective-date" class="muted" aria-live="polite"></p>
+        <div id="rate-cards" class="rate-grid" aria-live="polite"></div>
+
+        <details class="currency-settings">
+          <summary>Изменить набор валют</summary>
+          <div id="currency-options" class="check-grid"></div>
+        </details>
+      </section>
+
+      <section class="panel converter-panel" aria-labelledby="converter-title">
+        <div class="section-head">
+          <div>
+            <p class="section-number">02</p>
+            <h2 id="converter-title">Конвертер</h2>
+          </div>
+          <p class="rate-caption">По курсу ЦБ РФ на ту же дату</p>
+        </div>
+
+        <div class="converter-grid">
+          <label class="control amount-control">
+            <span>Сумма</span>
+            <input id="amount" type="text" inputmode="decimal" value="1000" autocomplete="off">
+          </label>
+          <label class="control">
+            <span>Из валюты</span>
+            <select id="from-currency"></select>
+          </label>
+          <button id="swap" class="swap" type="button" aria-label="Поменять валюты местами">⇄</button>
+          <label class="control">
+            <span>В валюту</span>
+            <select id="to-currency"></select>
+          </label>
+        </div>
+
+        <div class="result-box" aria-live="polite">
+          <span>Результат</span>
+          <strong id="result">-</strong>
+          <small id="calculation-note"></small>
+        </div>
+      </section>
+
+      <p class="source-note">Источник данных: <a href="https://www.cbr-xml-daily.ru/" target="_blank" rel="noopener">cbr-xml-daily.ru</a>. Курс ЦБ РФ не является курсом покупки или продажи валюты банком.</p>
+    </main>
+  </div>
+
+  <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+  <script src="app.js"></script>
+</body>
+</html>
